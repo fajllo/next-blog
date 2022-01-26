@@ -11,6 +11,9 @@ module.exports = {
         custom_orange: "#ff4c00",
         custom_dark: "#091638",
       },
+      fontFamily: {
+        source: ['"Source Code Pro"'],
+      },
     },
   },
   plugins: [],

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
-import { UserContex } from "../lib/contex";
+import { UserContext } from "../lib/contex";
 
 export default function Navbar() {
-  const { user, username } = useContext(UserContex);
+  const { user, username } = useContext(UserContext);
+
   return (
     <nav className="Navbar w-screen h-16 bg-neutral-100 border-b-2 md:m-2 flex items-center text-2xl ">
       <ul className="flex justify-between w-full mx-4 md:mx-12">
@@ -12,13 +13,13 @@ export default function Navbar() {
           {" "}
           <Link href="/">
             <button className="text-white bg-gray-800 py-2 px-4 rounded-lg">
-              Fsdr blog
+              Fsdr_Blog
             </button>
           </Link>
         </li>
         {/* {user is signed in and has user name} */}
-        {username && (
-          <div>
+        {user && (
+          <div className="flex items-center">
             <li>
               <Link href="/admin">
                 <button className="text-white bg-emerald-500 py-2 px-4 rounded-lg">
@@ -35,13 +36,16 @@ export default function Navbar() {
                     "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2360&q=80"
                   }
                 ></Image> */}
-                <img src={user?.photoURL} />
+                <img
+                  className="w-12 h-12 mx-4 rounded-full "
+                  src={user?.photoURL}
+                />
               </Link>
             </li>
           </div>
         )}
         {/* {user is NOT signed or has not created user name} */}
-        {!username && (
+        {!user && (
           <>
             <li>
               <Link href="/enter">

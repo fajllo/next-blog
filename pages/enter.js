@@ -1,6 +1,7 @@
 import { auth, googleAuthProvider, firestore } from "../lib/firebase";
 import { useContext, useEffect, useCallback, useState } from "react";
 import { UserContext } from "../lib/contex";
+import Loader from "../components/Loader";
 
 import debounce from "lodash.debounce";
 
@@ -68,7 +69,7 @@ function UsernameForm() {
         setIsValid(!exists);
         setLoading(false);
       }
-    }, 300),
+    }, 500),
     []
   );
   const handleSubmit = async e => {
@@ -144,11 +145,16 @@ function UsernameForm() {
 }
 function UsernameChecking({ username, isValid, loading }) {
   if (loading) {
-    return <p>checking username...</p>;
+    return (
+      <>
+        <p>checking username...</p>
+        <Loader show={true} />
+      </>
+    );
   } else if (isValid) {
-    return <p className = "text-green-500"> {username} is available</p>;
+    return <p className="text-green-500"> {username} is available</p>;
   } else if (username && !isValid) {
-    return <p className = "text-rose-500">{username} is already taken </p>;
+    return <p className="text-rose-500">{username} is already taken </p>;
   } else {
     return <p></p>;
   }

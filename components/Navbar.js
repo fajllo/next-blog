@@ -1,13 +1,21 @@
 import Link from "next/link";
-
+import { auth, googleAuthProvider } from "../lib/firebase";
 import { useContext } from "react";
 import { UserContext } from "../lib/contex";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const { user, username } = useContext(UserContext);
 
   // console.log(userData.user);
-
+  const router = useRouter();
+  const signOut = () => {
+    auth.signOut();
+    router.reload();
+  };
+  const singInWithGoogle = async () => {
+    await auth.signInWithPopup(googleAuthProvider);
+  };
   return (
     <nav className="Navbar w-screen h-16 bg-neutral-100 border-b-2  flex items-center text-2xl shadow-lg ">
       <ul className="flex justify-between w-full mx-4 md:mx-12">
@@ -19,13 +27,34 @@ export default function Navbar() {
             </button>
           </Link>
         </li>
+        {!username && (
+          <li>
+            <button
+              className="bg-gradient-to-r from-emerald-400 to-cyan-500 px-4 py-2 text-white rounded-xl"
+              onClick={singInWithGoogle}
+            >
+              G SignIn
+            </button>
+          </li>
+        )}
+
         {/* {user is signed in and has user name} */}
         {username && (
           <div className="flex items-center">
             <li>
+              <button
+                onClick={signOut}
+                className=" mx-2 bg-gradient-to-r from-pink-400 to-rose-500 px-4 py-2 text-white rounded-xl "
+              >
+                {" "}
+                sign out
+              </button>
+            </li>
+
+            <li>
               <Link href="/admin">
                 <button className="text-white bg-emerald-500 py-2 px-4 rounded-lg">
-                  new post
+                  new
                 </button>
               </Link>
             </li>
@@ -47,17 +76,6 @@ export default function Navbar() {
           </div>
         )}
         {/* {user is NOT signed or has not created user name} */}
-        {!username && (
-          <>
-            <li>
-              <Link href="/enter">
-                <button className="text-white bg-violet-500 py-2 px-4 rounded-lg">
-                  sign in
-                </button>
-              </Link>
-            </li>
-          </>
-        )}
       </ul>
     </nav>
   );

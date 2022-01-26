@@ -15,12 +15,12 @@ export default function Navbar() {
           {" "}
           <Link href="/">
             <button className="text-white bg-gray-800 py-2 px-4 rounded-lg">
-              Fsdr_Blog
+              Fsdr
             </button>
           </Link>
         </li>
         {/* {user is signed in and has user name} */}
-        {user && (
+        {username && (
           <div className="flex items-center">
             <li>
               <Link href="/admin">
@@ -47,7 +47,7 @@ export default function Navbar() {
           </div>
         )}
         {/* {user is NOT signed or has not created user name} */}
-        {!user && (
+        {!username && (
           <>
             <li>
               <Link href="/enter">

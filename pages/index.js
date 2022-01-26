@@ -2,8 +2,11 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import toast from "react-hot-toast";
+import { useContext } from "react";
+import { UserContext } from "../lib/contex";
 
 export default function Home() {
+  const { user } = useContext(UserContext);
   return (
     <>
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
@@ -21,7 +24,7 @@ export default function Home() {
                     <div className="flex-shrink-0 pt-0.5">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=6GHAjsWpt9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                        src={user.photoURL}
                         alt=""
                       />
                     </div>

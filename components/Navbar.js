@@ -1,13 +1,15 @@
 import Link from "next/link";
-import Image from "next/image";
+
 import { useContext } from "react";
 import { UserContext } from "../lib/contex";
 
 export default function Navbar() {
   const { user, username } = useContext(UserContext);
 
+  // console.log(userData.user);
+
   return (
-    <nav className="Navbar w-screen h-16 bg-neutral-100 border-b-2 md:m-2 flex items-center text-2xl ">
+    <nav className="Navbar w-screen h-16 bg-neutral-100 border-b-2  flex items-center text-2xl shadow-lg ">
       <ul className="flex justify-between w-full mx-4 md:mx-12">
         <li>
           {" "}
@@ -23,7 +25,7 @@ export default function Navbar() {
             <li>
               <Link href="/admin">
                 <button className="text-white bg-emerald-500 py-2 px-4 rounded-lg">
-                  write post
+                  new post
                 </button>
               </Link>
             </li>
@@ -37,7 +39,7 @@ export default function Navbar() {
                   }
                 ></Image> */}
                 <img
-                  className="w-12 h-12 mx-4 rounded-full "
+                  className="w-12 h-12 ml-2 rounded-full "
                   src={user?.photoURL}
                 />
               </Link>

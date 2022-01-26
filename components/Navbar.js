@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useContext } from "react";
+import { UserContex } from "../lib/contex";
 
 export default function Navbar() {
-  const user = true;
-  const username = true;
+  const { user, username } = useContext(UserContex);
   return (
-    <nav className="Navbar w-screen h-16 bg-neutral-200 flex items-center text-2xl ">
+    <nav className="Navbar w-screen h-16 bg-neutral-100 border-b-2 md:m-2 flex items-center text-2xl ">
       <ul className="flex justify-between w-full mx-4 md:mx-12">
         <li>
           {" "}

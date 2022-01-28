@@ -17,22 +17,17 @@ export default function Navbar() {
     await auth.signInWithPopup(googleAuthProvider);
   };
   return (
-    <nav className="Navbar w-screen h-16 bg-neutral-100 border-b-2  flex items-center text-2xl shadow-lg ">
-      <ul className="flex justify-between w-full mx-4 md:mx-12">
+    <nav className="Navbar w-screen h-16 flex items-center text-xl shadow-md shadow-black">
+      <ul className="flex justify-between w-full mx-4 md:mx-12 items-center">
         <li>
           {" "}
           <Link href="/">
-            <button className="text-white bg-gray-800 py-2 px-4 rounded-lg">
-              Fsdr
-            </button>
+            <button className="text-white bg-gray-800 ">Fsdr</button>
           </Link>
         </li>
         {!username && (
           <li>
-            <button
-              className="bg-gradient-to-r from-emerald-400 to-cyan-500 px-4 py-2 text-white rounded-xl"
-              onClick={singInWithGoogle}
-            >
+            <button className="bg-custom_yellow  " onClick={singInWithGoogle}>
               G SignIn
             </button>
           </li>
@@ -44,7 +39,7 @@ export default function Navbar() {
             <li>
               <button
                 onClick={signOut}
-                className=" mx-2 bg-gradient-to-r from-pink-400 to-rose-500 px-4 py-2 text-white rounded-xl "
+                className=" mx-2  bg-custom_red text-white "
               >
                 {" "}
                 sign out
@@ -53,9 +48,7 @@ export default function Navbar() {
 
             <li>
               <Link href="/admin">
-                <button className="text-white bg-emerald-500 py-2 px-4 rounded-lg">
-                  new
-                </button>
+                <button className=" bg-emerald-500 ">new</button>
               </Link>
             </li>
             <li>

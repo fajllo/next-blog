@@ -87,5 +87,3 @@ function MyLink(props) {
     </Link>
   );
 }
-
-

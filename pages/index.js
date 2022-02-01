@@ -5,8 +5,6 @@ import toast from "react-hot-toast";
 import { useContext } from "react";
 import { UserContext } from "../lib/contex";
 
-
-
 export default function Home() {
   const { user } = useContext(UserContext);
   return (
@@ -27,7 +25,7 @@ export default function Home() {
                       <img
                         className="h-10 w-10 rounded-full"
                         src={user.photoURL}
-                        alt=""
+                        alt="user.jpeg"
                       />
                     </div>
                     <div className="ml-3 flex-1">
@@ -43,7 +41,7 @@ export default function Home() {
                 <div className="flex border-l border-gray-200">
                   <button
                     onClick={() => toast.dismiss(t.id)}
-                    className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-rose-600 hover:text-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500"
+                    className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-rose-600 hover:text-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500 bg-red-100"
                   >
                     Close
                   </button>
@@ -54,13 +52,8 @@ export default function Home() {
         >
           click me
         </button>
-        <div className="flex flex-col">
-          {" "}
-         
-        </div>
+        <div className="flex flex-col"> </div>
       </div>
     </>
   );
 }
-
-

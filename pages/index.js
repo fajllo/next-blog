@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import { useContext } from "react";
 import { UserContext } from "../lib/contex";
 
+
+
 export default function Home() {
   const { user } = useContext(UserContext);
   return (
@@ -52,7 +54,13 @@ export default function Home() {
         >
           click me
         </button>
+        <div className="flex flex-col">
+          {" "}
+         
+        </div>
       </div>
     </>
   );
 }
+
+

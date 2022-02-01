@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { UserContext } from "../lib/contex";
 import { useRouter } from "next/router";
 
+import { Avatar } from "@nextui-org/react";
+
 export default function Navbar() {
   const { user, username } = useContext(UserContext);
 
@@ -25,6 +27,7 @@ export default function Navbar() {
             <button className="text-white bg-gray-800 ">Fsdr</button>
           </Link>
         </li>
+
         {!username && (
           <li>
             <button className="bg-custom_yellow  " onClick={singInWithGoogle}>
@@ -60,9 +63,12 @@ export default function Navbar() {
                     "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2360&q=80"
                   }
                 ></Image> */}
-                <img
-                  className="w-12 h-12 ml-2 rounded-full "
-                  src={user?.photoURL}
+                <Avatar
+                  size="lg"
+                  src={user?.photoURL || "user.jpeg"}
+                  color="gradient"
+                  bordered
+                  squared
                 />
               </Link>
             </li>
@@ -73,3 +79,13 @@ export default function Navbar() {
     </nav>
   );
 }
+function MyLink(props) {
+  let { href, children, ...rest } = props;
+  return (
+    <Link href={href}>
+      <a {...rest}>{children}</a>
+    </Link>
+  );
+}
+
+

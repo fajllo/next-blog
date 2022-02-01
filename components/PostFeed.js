@@ -11,7 +11,7 @@ export default function PostFeed({ posts, admin }) {
     : null;
 
   return (
-    <div className="flex flex-col w-full md:px-24 py-12 px-8">
+    <div className="flex flex-col w-full lg:px-24 py-12 px-2">
       <PostItem post={posts[0]} key={posts[0].slug} admin={admin} />
       {postItems}
     </div>
@@ -22,7 +22,7 @@ function PostItem({ post, admin = false }) {
   const wordCount = post?.content.trim().split(/\s+/g).length;
   const minutesToRead = (wordCount / 100 + 1).toFixed(0);
   return (
-    <div className="flex flex-col w-full md:w-1/2 gap-2  dark:border-slate-50 border-2 p-8 rounded-lg">
+    <div className="flex flex-col w-full md:w-1/2 gap-2  dark:border-slate-50 border-2 p-2 lg:p-4 rounded-lg">
       <header className="flex  items-center">
         <h1>@{post.username} </h1>
         <Spacer x={0.5} />
@@ -34,10 +34,12 @@ function PostItem({ post, admin = false }) {
       </header>
       <main>{post.content}</main>
       <footer className="flex justify-between items-center">
-        <div className="flex gap-2">
+        <div className="flex gap-2 ">
           {" "}
-          <h1>Words: {wordCount} </h1>
-          <h1> Minutes to read: {minutesToRead}</h1>
+          <div className="invisible lg:visible">
+            <h1>Words: {wordCount}. </h1>
+            <h1> Read time: {minutesToRead} min.</h1>
+          </div>
         </div>
         <div className="flex items-center">
           {" "}

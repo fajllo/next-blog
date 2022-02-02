@@ -6,7 +6,7 @@ import { useUserData } from "../lib/hooks";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
-  const { user, username } = useUserData();
+  const { user, username,  } = useUserData();
 
   return (
     <>
@@ -16,6 +16,11 @@ function MyApp({ Component, pageProps }) {
         <link
           href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400;700&display=swap"
           rel="stylesheet"
+        />
+        <meta property="og:title" content={"fsdr blog"} />
+        <meta
+          property="og:description"
+          content={"this a blog website created with next js "}
         />
       </Head>
       <UserContext.Provider value={{ user, username }}>

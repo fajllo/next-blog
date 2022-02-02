@@ -28,7 +28,7 @@ function PostItem({ post, admin = false }) {
           </Link>
         </Button>
       </header>
-      <main>{post.content}</main>
+      <main>{post.slug}</main>
       <footer className="flex justify-between items-center">
         <div className="flex gap-2 ">
           {" "}

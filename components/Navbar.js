@@ -1,10 +1,9 @@
-import Link from "next/link";
 import { auth, googleAuthProvider } from "../lib/firebase";
 import { useContext } from "react";
 import { UserContext } from "../lib/contex";
 import { useRouter } from "next/router";
 
-import { Avatar } from "@nextui-org/react";
+import { Avatar, Link } from "@nextui-org/react";
 
 export default function Navbar() {
   const { user, username } = useContext(UserContext);
@@ -19,7 +18,7 @@ export default function Navbar() {
     await auth.signInWithPopup(googleAuthProvider);
   };
   return (
-    <nav className="Navbar w-screen h-16 flex items-center text-xl shadow-md shadow-black">
+    <nav className="Navbar w-screen h-16 flex items-center text-xl shadow-md shadow-black dark:bg-gray-700">
       <ul className="flex justify-between w-full mx-4 md:mx-12 items-center">
         <li>
           {" "}
@@ -56,19 +55,13 @@ export default function Navbar() {
             </li>
             <li>
               <Link href={`/${username}`}>
-                {/* pierwsze jest dobre tylko trzeba to skonfigurowac jak ju będą jakieś zdjęcia  */}
-                {/* <Image src={{user?.photoURL}}></Image>  */}
-                {/* <Image
-                  src={
-                    "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2360&q=80"
-                  }
-                ></Image> */}
                 <Avatar
                   size="lg"
                   src={user?.photoURL || "user.jpeg"}
                   color="gradient"
                   bordered
                   squared
+                  zoomed
                 />
               </Link>
             </li>

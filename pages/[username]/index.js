@@ -1,6 +1,6 @@
 import PostFeed from "../../components/PostFeed";
 import UserProfile from "../../components/UserProfile";
-import { getUserWithUsername, postToJSON } from "../../lib/firebase";
+import { getUserWithUsername, postToJSON, firestore } from "../../lib/firebase";
 
 export async function getServerSideProps({ query }) {
   //   get user name from url
@@ -12,8 +12,8 @@ export async function getServerSideProps({ query }) {
 
   if (userDoc) {
     user = userDoc.data();
-    const postsQuery = userDoc.ref
-      .collection("posts")
+    const postsQuery = firestore
+      .collectionGroup("posts")
       .where("published", "==", true)
       .orderBy("createdAt", "desc")
       .limit(5);
